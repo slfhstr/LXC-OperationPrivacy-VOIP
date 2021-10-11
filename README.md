@@ -152,11 +152,11 @@ Now we can get going ...
 ## configure repo
 The following is not particularly clear (at time of writing anyway) from the official guides.
 	
-And it is the magic which makes it all work (well, webhook in Telnyx also see below). 
+And it is the magic which makes it all work. 
 
 `nano .env` or use your favourite editor (cough : `ne`)
 
-ensure that the following is set up (not specified in the rep sample .env) : you can leave the other lines
+ensure that the following is set up (not specified in the repo sample .env) : you can leave the other lines
 ```
 DB = mongodb://<db_admin_name>:<db_password>@localhost/admin
 BASE_URL = https://<domain>.<tld>/
