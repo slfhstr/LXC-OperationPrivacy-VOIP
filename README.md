@@ -232,7 +232,7 @@ Go back into your container : `lxc exec <containername> -- /bin/bash`
 	
 `node app.js &`
 
-Then visit your installation URL, sign up for an account (your own), and add a Profile.
+Then visit your installation URL, sign up for an account (your own), and add a "Profile" which configures the service provider (Telnyx or Twilio) and the number you will be using for SMS.
 
 You will need the API key from your Telnyx account, and it should show your number(s) available.
 	
