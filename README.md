@@ -80,15 +80,18 @@ You probably want a secure mongo db.
 The following is an abstract of excellent guide at https://www.digitalocean.com/community/tutorials/how-to-secure-mongodb-on-ubuntu-20-04
 
  `mongo` : enters interactive shell - enter these commands line by line
-	`show dbs`
-	use admin`
-	`db.createUser(`
-	`{`
-	`user: "mongoadmin",`
-	`pwd: passwordPrompt(),`
-	`roles: [ { role: "userAdminAnyDatabase", db: "admin" }, "readWriteAnyDatabase" ]`
-	`}`
-	`)` : closing bracket complete the command
+  ```
+	show dbs
+	use admin
+	db.createUser(
+	{
+	user: "mongoadmin",
+	pwd: passwordPrompt(),
+	roles: [ { role: "userAdminAnyDatabase", db: "admin" }, "readWriteAnyDatabase" ]
+	}
+	)
+ ```
+	: closing bracket complete the command
 
 `nano /etc/mongod.conf`. : <blatant plug : use `ne` editor, it's much nicer, `apt install ne -y`
 -->	uncomment line `#security:`
