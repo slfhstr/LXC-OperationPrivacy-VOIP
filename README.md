@@ -19,12 +19,12 @@ So I documented process of deploying @OperationPrivacy's app in a LXC container,
 
 DISCLAIMER : I am not a professional developer, and this guide is pitched at someone (me) needing a step-by-step process.
 
-IMPORTANT : this is **not** a substitute for the instructions at https://github.com/0perationPrivacy/voip/wiki, more of a supplement.
+IMPORTANT : this is **NOT** a substitute for the instructions at https://github.com/0perationPrivacy/voip/wiki, more of a supplement.
 
 - prepare LXC container
 - install mongodb
 - secure mongodb
-- clone repo
+- clone repo & build
 - configure repo
 - configure Telnyx
 - run it
@@ -48,3 +48,114 @@ These are the basic steps you need to take
 
 `apt autoremove -y` : tidy up
   
+## install latest mongodb
+Ubuntu has an old version of mongo db (v3.x).  You probably want the latest version.
+For full details, please read the excellent guide at https://www.digitalocean.com/community/tutorials/how-to-install-mongodb-on-ubuntu-20-04
+ 
+`curl -fsSL https://www.mongodb.org/static/pgp/server-4.4.asc | sudo apt-key add -`
+ 
+`echo "deb [ arch=amd64,arm64 ] https://repo.mongodb.org/apt/ubuntu focal/mongodb-org/4.4 multiverse" | sudo tee /etc/apt/sources.list.d/mongodb-org-4.4.list`
+ 
+`apt-get update -y`
+ 
+`apt install mongodb-org -y`
+ 
+`systemctl start mongod.service`
+
+`systemctl status mongod`
+ 
+That should show a running mongo instance.  If not, check the detailed guide linked above.
+ 
+`systemctl enable mongod`
+ 
+`mongo --eval 'db.runCommand({ connectionStatus: 1 })'`
+ 
+`systemctl status mongod`
+
+## secure mongodb
+You probably want a secure mongo db.
+The following is an abstract of excellent guide at https://www.digitalocean.com/community/tutorials/how-to-secure-mongodb-on-ubuntu-20-04
+
+ `mongo` : enters interactive shell - enter these commands line by line
+	`show dbs`
+	use admin`
+	`db.createUser(`
+	`{`
+	`user: "mongoadmin",`
+	`pwd: passwordPrompt(),`
+	`roles: [ { role: "userAdminAnyDatabase", db: "admin" }, "readWriteAnyDatabase" ]`
+	`}`
+	`)` : closing bracket complete the command
+
+`nano /etc/mongod.conf`. : <blatant plug : use `ne` editor, it's much nicer, `apt install ne -y`
+-->	uncomment line `#security:`
+-->	add line `authorization: enabled`
+ 
+`systemctl restart mongod`
+ 
+`systemctl status mongod`
+ 
+`mongo -u mongoadmin -p --authenticationDatabase admin`
+ 
+`show dbs` : confirms you can see databases currently installed (nothing much) 
+
+ `exit`
+ 
+## clone VoIP repo & build
+Now we can get going ...
+
+`git clone https://github.com/0perationPrivacy/VoIP/`
+
+`cd VoIP`
+ 
+`apt install nodejs -y`
+ 
+`apt install npm -y`
+ 
+`npm install`
+ 
+## configure repo
+The following is not particularly clear (at time of writing anyway) from the official guides.
+And it is the magic which makes it all work (well, webhook in Telnyx also see below). 
+
+`nano .env` or use your favourite editor (cough : `ne`)
+ensure that the following is set up (not specified in the rep sample .env) : you can leave the other lines
+```
+DB = mongodb://<db_admin_name>:<db_password>@localhost/admin
+BASE_URL = https://<domain>.<tld>/
+```
+NB : as per Troubleshooting, ensure the `BASE_URL` has protocol (hhtps) not just url, and ensure it has trailing `/`
+
+## configure Telnyx
+Sorry, I don't know about Twilio.  You're on your opwn there, but it is probably similar.
+Telnyx is much easier anyway (and cheaper).
+Check out Michael's guide for instructions on opening a Telnyx account (https://inteltechniques.com/sms.html).
+But note the following :
+- you need to buy a number (doh!) and it should be SMS enabled : pick your region
+- you need to Get at least L1 verified to use it, and you may well need L2 verification if you're not in US
+- L2 verification needs 24-48 hours, but if you leave it say 12 hours and talk by chat very nicely to support, you may be lucky and they do it then & there.
+- you need to create a messaging profile and specify a web hook in the format `https://<domain.tld>/webhooks` 
+- ensure the mesaging profile is set to APIV2 (see also Troubleshooting notes in OperationPrivacy/VoIP wiki
+- you need to attach your number to the messaging profile (in the Numbers section of Telnyx dashboard)
+
+## run it !
+You should be all set to fire it up
+`node app.js &`
+Then visit your installation URL, sign up for an account (your own), and add a Profile.
+You will need the API key from your Telnyx account, and it should show your number(s) available.
+Test it.
+If you need to stop the app, the brutal way is `killall node`.  Because you're running in a LXC container, you should not affacted anything else.
+If you leave the termoinal running, you can see status messages when you interact with the browser.
+If you ensure you yse the trailing `&`, you can exit from the container and your VPS terminal, and the app should continue running.
+
+## notes 
+- I haven't used the app for voice, so no knowledge here
+- I haven't tested all aspects of the app (e.g. attachments)
+- Telnyx has rate limits to avoid sending abuse
+- **the big one** : config changes in the app, e.g. the .env file, need the profile in the browser to be deleted and re-created.  This will lead to past messages being lost.  Save them somehow if you need them.
+- I haven't tested any keepalive measure to ensure the app stays running (check out notes at bottom of Michael's instructions).  I am not convinced they are needed but hey, what do I know.
+
+I hope this is helpful.
+Let me know any corrections, omissions or questions.
+                                    
+ 
