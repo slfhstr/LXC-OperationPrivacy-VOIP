@@ -99,7 +99,10 @@ The following is an abstract of excellent guide at https://www.digitalocean.com/
 	}
 	)
  ```
-closing bracket complete the command
+closing bracket complete the command : you should be prompted for your password and then get a confirmation message that user created successfully.
+
+Then `exit` the mongo shell and return to the container command line 
+
 
 `nano /etc/mongod.conf`. : <blatant plug : use `ne` editor, it's much nicer, `apt install ne -y`>
 
