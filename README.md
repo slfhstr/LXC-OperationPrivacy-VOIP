@@ -47,7 +47,7 @@ These are the basic steps you need to take to fire up a container.
 
 `lxc launch ubuntu:20.04 <containername>` : creates a new Ubuntu 20.04 container with your chosen name.  First time may take a few minutes to download the OS image.  
 
-`lxc exec <containername> -- /bin/bash` : enter the container as root (similar to normal Linux su <user>.  Note shell prompt should change.
+`lxc exec <containername> -- /bin/bash` : enter the container as root (similar to normal Linux su <user>).  Note shell prompt should change.
  
 `hostname` : should confirm you're in the right place
   
