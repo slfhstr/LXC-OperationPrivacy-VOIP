@@ -124,20 +124,26 @@ Now we can get going ...
  
 ## configure repo
 The following is not particularly clear (at time of writing anyway) from the official guides.
+	
 And it is the magic which makes it all work (well, webhook in Telnyx also see below). 
 
 `nano .env` or use your favourite editor (cough : `ne`)
+
 ensure that the following is set up (not specified in the rep sample .env) : you can leave the other lines
 ```
 DB = mongodb://<db_admin_name>:<db_password>@localhost/admin
 BASE_URL = https://<domain>.<tld>/
 ```
+
 NB : as per Troubleshooting, ensure the `BASE_URL` has protocol (hhtps) not just url, and ensure it has trailing `/`
 
 ## configure Telnyx
 Sorry, I don't know about Twilio.  You're on your opwn there, but it is probably similar.
+	
 Telnyx is much easier anyway (and cheaper).
+
 Check out Michael's guide for instructions on opening a Telnyx account (https://inteltechniques.com/sms.html).
+
 But note the following :
 - you need to buy a number (doh!) and it should be SMS enabled : pick your region
 - you need to Get at least L1 verified to use it, and you may well need L2 verification if you're not in US
