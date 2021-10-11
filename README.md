@@ -154,19 +154,27 @@ But note the following :
 
 ## run it !
 You should be all set to fire it up
+	
 `node app.js &`
+
 Then visit your installation URL, sign up for an account (your own), and add a Profile.
+
 You will need the API key from your Telnyx account, and it should show your number(s) available.
+	
 Test it.
+
 If you need to stop the app, the brutal way is `killall node`.  Because you're running in a LXC container, you should not affacted anything else.
+
 If you leave the termoinal running, you can see status messages when you interact with the browser.
+
 If you ensure you yse the trailing `&`, you can exit from the container and your VPS terminal, and the app should continue running.
 
+---
 ## notes 
 - I haven't used the app for voice, so no knowledge here
 - I haven't tested all aspects of the app (e.g. attachments)
 - Telnyx has rate limits to avoid sending abuse
-- **the big one** : config changes in the app, e.g. the .env file, need the profile in the browser to be deleted and re-created.  This will lead to past messages being lost.  Save them somehow if you need them.
+- **the big one** : config changes in the app, e.g. the `.env` file, need the profile in the browser to be deleted and re-created.  This will lead to past messages being lost.  Save them somehow if you need them.
 - I haven't tested any keepalive measure to ensure the app stays running (check out notes at bottom of Michael's instructions).  I am not convinced they are needed but hey, what do I know.
 
 I hope this is helpful.
