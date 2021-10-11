@@ -40,7 +40,8 @@ YMMV (your mileage may vary).
 ---
 ## prepare LXC container
 This is not a tutorial on LXC.  For that, see https://linuxcontainers.org/lxc/introduction/.
-These are the basic steps you need to take
+
+These are the basic steps you need to take to fire up a container.
 
 `lxc --version` : confirms that LXC is installed on your Linux instance.
 
