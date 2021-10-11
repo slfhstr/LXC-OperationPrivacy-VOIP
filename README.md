@@ -225,7 +225,7 @@ If you leave the terminal running, you can see status messages when you interact
 
 If you ensure you use the trailing `&`, you can exit from the container and your VPS terminal, and the app should continue running.
 
-NB : if you later edt the `.env` to turn off signups (so others cannot hijack and abuse your installation), you will need to kill and restart node, and also delete the profile in the app and set it up again : see the Notes section below.
+NB : if you later edit the `.env` to turn off signups (so others cannot hijack and abuse your installation), you will need to kill and restart node, and also delete the profile in the app and set it up again : see the Notes section below.
 
 ---
 ## notes 
