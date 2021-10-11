@@ -4,6 +4,7 @@ Notes on deploying https://github.com/0perationPrivacy/VoIP in a LXC container (
 This is **NOT** a fork of OperationPrivacy/VOIP.
 This is a HOW-TO for installing that repo in a container using LXC (https://linuxcontainers.org/lxc/introduction/).
 
+---
 ## Context
 I enjoy Michael Bazzell's OSINT podcast and learnt about the self-hosted sms portal app developed by @OperationPrivacy following Michael's nagging.
 But ... without criticism ... I did not feel that the deployment option described in https://inteltechniques.com/sms.html was suitable.
@@ -30,11 +31,13 @@ IMPORTANT : this is **NOT** a substitute for the instructions at https://github.
 - configure Telnyx
 - run it
 
+---
 ## run as ...
 If you are logged in to your Linux box as a normal user, which you should be, you may need to prefix commands with `sudo`.
 
 YMMV (your mileage may vary).
 
+---
 ## prepare LXC container
 This is not a tutorial on LXC.  For that, see https://linuxcontainers.org/lxc/introduction/.
 These are the basic steps you need to take
@@ -51,6 +54,7 @@ These are the basic steps you need to take
 
 `apt autoremove -y` : tidy up
   
+---
 ## install latest mongodb
 Ubuntu has an old version of mongo db (v3.x).  You probably want the latest version.
 For full details, please read the excellent guide at https://www.digitalocean.com/community/tutorials/how-to-install-mongodb-on-ubuntu-20-04
@@ -75,6 +79,7 @@ That should show a running mongo instance.  If not, check the detailed guide lin
  
 `systemctl status mongod`
 
+---
 ## secure mongodb
 You probably want a secure mongo db.
 The following is an abstract of excellent guide at https://www.digitalocean.com/community/tutorials/how-to-secure-mongodb-on-ubuntu-20-04
@@ -108,7 +113,8 @@ closing bracket complete the command
 `show dbs` : confirms you can see databases currently installed (nothing much) 
 
  `exit`
- 
+
+---
 ## clone VoIP repo & build
 Now we can get going ...
 
@@ -121,7 +127,8 @@ Now we can get going ...
 `apt install npm -y`
  
 `npm install`
- 
+
+---
 ## configure repo
 The following is not particularly clear (at time of writing anyway) from the official guides.
 	
@@ -137,6 +144,7 @@ BASE_URL = https://<domain>.<tld>/
 
 NB : as per Troubleshooting, ensure the `BASE_URL` has protocol (hhtps) not just url, and ensure it has trailing `/`
 
+---
 ## configure Telnyx
 Sorry, I don't know about Twilio.  You're on your opwn there, but it is probably similar.
 	
@@ -152,8 +160,9 @@ But note the following :
 - ensure the mesaging profile is set to APIV2 (see also Troubleshooting notes in OperationPrivacy/VoIP wiki
 - you need to attach your number to the messaging profile (in the Numbers section of Telnyx dashboard)
 
+---
 ## run it !
-You should be all set to fire it up
+You should be all set to fire it up.
 	
 `node app.js &`
 
@@ -180,4 +189,3 @@ If you ensure you yse the trailing `&`, you can exit from the container and your
 I hope this is helpful.
 Let me know any corrections, omissions or questions.
                                     
- 
