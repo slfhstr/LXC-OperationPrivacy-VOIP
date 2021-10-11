@@ -12,10 +12,11 @@ But ... without criticism ... I did not feel that the deployment option describe
 
 Most of my self-hosting is via Docker.  But there is no Docker available (yet) for the app.
 So I decided to go a different route to achieve containerisation : LXC.
+
 It's not as well known or as widely used as Docker, but it is in many ways easier.
 And in all likelihood you may well have LXC alrready installed if you're running Ubuntu 20.04.
 
-So I documented process of deploying @OperationPrivacy's app in a LXC container, and hope it helps others.
+So I documented my process of deploying @OperationPrivacy's app in a LXC container, and hope it helps others.
 
 DISCLAIMER : I am not a professional developer, and this guide is pitched at someone (me) needing a step-by-step process.
 
