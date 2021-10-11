@@ -91,11 +91,13 @@ The following is an abstract of excellent guide at https://www.digitalocean.com/
 	}
 	)
  ```
-	: closing bracket complete the command
+closing bracket complete the command
 
-`nano /etc/mongod.conf`. : <blatant plug : use `ne` editor, it's much nicer, `apt install ne -y`
--->	uncomment line `#security:`
--->	add line `authorization: enabled`
+`nano /etc/mongod.conf`. : <blatant plug : use `ne` editor, it's much nicer, `apt install ne -y`>
+
+	-->	uncomment line `#security:`
+
+	-->	add line `authorization: enabled`
  
 `systemctl restart mongod`
  
