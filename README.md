@@ -1,7 +1,7 @@
 # LXC-OperationPrivacy-VOIP
 Notes on deploying https://github.com/0perationPrivacy/VoIP in a LXC container (interim to a Docker deployment)
 
-This is **not** a fork of OperationPrivacy/VOIP.
+This is **NOT** a fork of OperationPrivacy/VOIP.
 This is a HOW-TO for install that repo in a container using LXC (https://linuxcontainers.org/lxc/introduction/).
 
 ## Context
