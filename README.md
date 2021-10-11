@@ -106,9 +106,23 @@ Then `exit` the mongo shell and return to the container command line
 
 `nano /etc/mongod.conf`. : <blatant plug : use `ne` editor, it's much nicer, `apt install ne -y`>
 
-	-->	uncomment line `#security:`
+find the line which says `#security` and remove the hash symbol
 
-	-->	add line `authorization: enabled`
+add a new line below it with `authorization: enabled` BUT INDENT 2 spaces
+
+Note the formatting :
+```
+# how the process runs
+processManagement:
+  timeZoneInfo: /usr/share/zoneinfo
+
+security:
+  authorization: enabled
+
+#operationProfiling:
+
+```
+save the file and quit it
  
 `systemctl restart mongod`
  
