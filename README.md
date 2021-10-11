@@ -190,7 +190,7 @@ server {
        server_name <domain>.<tld>;
 
        location / {
-                proxy_pass http://<conainter_ip>:3000;
+                proxy_pass http://<container_ip>:3000;
                 proxy_http_version 1.1;
                 proxy_cache_bypass $http_upgrade;
         # Proxy headers
