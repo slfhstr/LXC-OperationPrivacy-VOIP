@@ -10,7 +10,7 @@ But ... without criticism ... I did not feel that the deployment option describe
 1. deploying to Heroku is not great for me (I am a committed self-hoster and the free Heroku can lead to a bigger paid account)
 2. as a committed self-hoster, I was not keen on hosting the db element on mongodb.com
 
-Most of my self-hosting is via Docker.  But there is no Diocker available (yet) for the app.
+Most of my self-hosting is via Docker.  But there is no Docker available (yet) for the app.
 So I decided to go a different route to achieve containerisation : LXC.
 It's not as well known or as widely used as Docker, but it is in many ways easier.
 And in all likelihood you may well have LXC alrready installed if you're running Ubuntu 20.04.
