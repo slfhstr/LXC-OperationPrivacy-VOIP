@@ -143,7 +143,7 @@ DB = mongodb://<db_admin_name>:<db_password>@localhost/admin
 BASE_URL = https://<domain>.<tld>/
 ```
 
-NB : as per Troubleshooting, ensure the `BASE_URL` has protocol (hhtps) not just url, and ensure it has trailing `/`
+NB : as per Troubleshooting, ensure the `BASE_URL` has protocol (https) not just url, and ensure it has trailing `/`
 
 ---> Now `exit` from your container back to host VPS <---
 
