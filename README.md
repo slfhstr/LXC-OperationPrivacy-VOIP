@@ -41,11 +41,11 @@ YMMV (your mileage may vary).
 ## prepare LXC container
 This is not a tutorial on LXC.  For that, see https://linuxcontainers.org/lxc/introduction/.
 
+`lxc --version` : confirms that LXC is installed on your Linux instance.
+
 **IF THIS IS YOUR FIRST USE OF LXC**, you need to first run `lxd init`.  There will be a bunch of questions, most of which can be answered using the default option (press `enter`).  I suggest you follow https://www.digitalocean.com/community/tutorials/how-to-install-and-configure-lxd-on-ubuntu-20-04 for the detail.
 
 If you have done `lxd init`, then these are the basic steps you need to take to fire up a container.
-
-`lxc --version` : confirms that LXC is installed on your Linux instance.
 
 `lxc launch ubuntu:20.04 <containername>` : creates a new Ubuntu 20.04 container with your chosen name.  First time may take a few minutes to download the OS image.  
 
