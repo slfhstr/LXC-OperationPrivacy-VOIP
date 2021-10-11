@@ -200,7 +200,7 @@ But note the following :
 - you need to Get at least L1 verified to use it, and you may well need L2 verification if you're not in US
 - L2 verification needs 24-48 hours, but if you leave it say 12 hours and talk by chat very nicely to support, you may be lucky and they do it then & there.
 - you need to create a messaging profile and specify a web hook in the format `https://<domain.tld>/webhooks` 
-- ensure the mesaging profile is set to APIV2 (see also Troubleshooting notes in OperationPrivacy/VoIP wiki
+- ensure the mesaging profile is set to APIV2 (see also Troubleshooting notes in OperationPrivacy/VoIP wiki)
 - you need to attach your number to the messaging profile (in the Numbers section of Telnyx dashboard)
 
 ---
@@ -219,18 +219,20 @@ You will need the API key from your Telnyx account, and it should show your numb
 	
 Test it.
 
-If you need to stop the app, the brutal way is `killall node`.  Because you're running in a LXC container, you should not affacted anything else.
+If you need to stop the app, the brutal way is `killall node`.  Because you're running in a LXC container, you should not affect anything else.
 
-If you leave the termoinal running, you can see status messages when you interact with the browser.
+If you leave the terminal running, you can see status messages when you interact with the browser.
 
-If you ensure you yse the trailing `&`, you can exit from the container and your VPS terminal, and the app should continue running.
+If you ensure you use the trailing `&`, you can exit from the container and your VPS terminal, and the app should continue running.
+
+NB : if you later edt the `.env` to turn off signups (so others cannot hijack and abuse your installation), you will need to kill and restart node, and also delete the profile in the app and set it up again : see the Notes section below.
 
 ---
 ## notes 
-- I haven't used the app for voice, so no knowledge here
+- **the big one** : config changes in the app, e.g. the `.env` file, need the profile in the browser to be deleted and re-created.  This will lead to past messages being lost.  Save them somehow if you need them.
+- I haven't used the app for voice, so no knowledge there, and I'm not sure I will be using the app for voice
 - I haven't tested all aspects of the app (e.g. attachments)
 - Telnyx has rate limits to avoid sending abuse
-- **the big one** : config changes in the app, e.g. the `.env` file, need the profile in the browser to be deleted and re-created.  This will lead to past messages being lost.  Save them somehow if you need them.
 - I haven't tested any keepalive measure to ensure the app stays running (check out notes at bottom of Michael's instructions).  I am not convinced they are needed but hey, what do I know.
 
 I hope this is helpful.
