@@ -189,7 +189,7 @@ server {
 
 ---
 ## configure Telnyx
-Sorry, I don't know about Twilio.  You're on your opwn there, but it is probably similar.
+Sorry, I don't know about Twilio.  You're on your own there, but it is probably similar.
 	
 Telnyx is much easier anyway (and cheaper).
 
