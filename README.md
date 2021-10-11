@@ -38,6 +38,12 @@ If you are logged in to your Linux box as a normal user, which you should be, yo
 YMMV (your mileage may vary).
 
 ---
+## problems with guide ??
+If you run into any problems following this guide, firstly apologies, secondly be sure to check the detailed instructions referenced in various sections.
+
+And let me know so I can improve it.
+
+---
 ## prepare LXC container
 This is not a tutorial on LXC.  For that, see https://linuxcontainers.org/lxc/introduction/.
 
