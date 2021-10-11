@@ -144,6 +144,48 @@ BASE_URL = https://<domain>.<tld>/
 
 NB : as per Troubleshooting, ensure the `BASE_URL` has protocol (hhtps) not just url, and ensure it has trailing `/`
 
+---> Now `exit` from your container back to host VPS <---
+
+---
+## nginx reverse proxy
+- NB : this is done in your host VPS : check you are not still in your container
+- set up your DNS to point your domain or subdomain to your VPS
+- your container is bridged auto-magically when the container is built and launched
+- but that's only fine for outbound traffic : you need inbound traffic (doh!) as well
+- your installation may be different but in my case I need `nginx` running on the VPS and then a `nginx` conf file to direct traffic to the container
+- do `lxc list` to get the local ip address of your container : you need it for the nginx conf file
+- create the conf file :  `nano /etc/nginx/sites-available/<domain>.<tld>`
+- sample nginx conf file below pre-SSL enabling
+- enable it : `ln -s /etc/nginx/sites-available/<domain>.<tld> /etc/nginx/sites-enabled/<domain>.<tld> `
+- check config : `nginx -t`
+- reload config : `systemctl reload nginx`
+- do your certbot dance to get https cert (if your `.env` is set up with https in BASE_URL
+
+sample nginx conf file as BEFORE you do your certbot dance to get https enabled :
+```
+server {
+       listen 80;
+       listen [::]:80;
+
+       server_name <domain>.<tld>;
+
+       location / {
+                proxy_pass http://<conainter_ip>:3000;
+                proxy_http_version 1.1;
+                proxy_cache_bypass $http_upgrade;
+        # Proxy headers
+        proxy_set_header Upgrade           $http_upgrade;
+        proxy_set_header Connection        "upgrade";
+        proxy_set_header Host              $host;
+        proxy_set_header X-Real-IP         $remote_addr;
+        proxy_set_header X-Forwarded-For   $proxy_add_x_forwarded_for;
+        proxy_set_header X-Forwarded-Proto $scheme;
+        proxy_set_header X-Forwarded-Host  $host;
+        proxy_set_header X-Forwarded-Port  $server_port;
+       }
+}
+```
+
 ---
 ## configure Telnyx
 Sorry, I don't know about Twilio.  You're on your opwn there, but it is probably similar.
@@ -163,6 +205,10 @@ But note the following :
 ---
 ## run it !
 You should be all set to fire it up.
+
+Go back into your container : `lxc exec <containername> -- /bin/bash`
+
+`cd VoIP`
 	
 `node app.js &`
 
