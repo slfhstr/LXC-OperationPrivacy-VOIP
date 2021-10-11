@@ -47,7 +47,7 @@ These are the basic steps you need to take to fire up a container.
 
 `lxc launch ubuntu:20.04 <containername>` : creates a new Ubuntu 20.04 container with your chosen name.  First time may take a few minutes to download the OS image.  
 
-`lxc exec <containername> -- /bin/bash` : enter the container as root (similar to normal Linux su <user>).  Note shell prompt should change.
+`lxc exec <containername> -- /bin/bash` : enter the container as root (similar to normal Linux su user).  Note shell prompt should change.
  
 `hostname` : should confirm you're in the right place
   
@@ -160,7 +160,7 @@ NB : as per Troubleshooting, ensure the `BASE_URL` has protocol (https) not just
 - enable it : `ln -s /etc/nginx/sites-available/<domain>.<tld> /etc/nginx/sites-enabled/<domain>.<tld> `
 - check config : `nginx -t`
 - reload config : `systemctl reload nginx`
-- do your certbot dance to get https cert (if your `.env` is set up with https in BASE_URL
+- do your certbot dance to get https cert (if your `.env` is set up with https in BASE_URL)
 
 sample nginx conf file as BEFORE you do your certbot dance to get https enabled :
 ```
