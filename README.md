@@ -6,7 +6,7 @@ This is a HOW-TO for installing that repo in a container using LXC (https://linu
 
 ## Context
 I enjoy Michael Bazzell's OSINT podcast and learnt about the self-hosted sms portal app developed by @OperationPrivacy following Michael's nagging.
-But ... without criticism ... I did not feel that the deployment option described https://inteltechniques.com/sms.html was suitable.
+But ... without criticism ... I did not feel that the deployment option described in https://inteltechniques.com/sms.html was suitable.
 1. deploying to Heroku is not great for me (I am a committed self-hoster and the free Heroku can lead to a bigger paid account)
 2. as a committed self-hoster, I was not keen on hosting the db element on mongodb.com
 
