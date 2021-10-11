@@ -199,9 +199,9 @@ But note the following :
 - you need to buy a number (doh!) and it should be SMS enabled : pick your region
 - you need to Get at least L1 verified to use it, and you may well need L2 verification if you're not in US
 - L2 verification needs 24-48 hours, but if you leave it say 12 hours and talk by chat very nicely to support, you may be lucky and they do it then & there.
-- you need to create a messaging profile and specify a web hook in the format `https://<domain.tld>/webhooks` 
-- ensure the mesaging profile is set to APIV2 (see also Troubleshooting notes in OperationPrivacy/VoIP wiki)
-- you need to attach your number to the messaging profile (in the Numbers section of Telnyx dashboard)
+- ~~you need to create a messaging profile and specify a web hook in the format `https://<domain.tld>/webhooks`~~. NO!  @OperationPrivacy reports that this is created by the app auto-magically
+- ~~ensure the mesaging profile is set to APIV2~~ see above correction.  (see also Troubleshooting notes in OperationPrivacy/VoIP wiki)
+- ~~you need to attach your number to the messaging profile (in the Numbers section of Telnyx dashboard)~~ see above correction
 
 ---
 ## run it !
