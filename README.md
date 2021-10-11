@@ -31,7 +31,8 @@ IMPORTANT : this is **NOT** a substitute for the instructions at https://github.
 - run it
 
 ## run as ...
-If you are logged in to your Linux box as a normal user, which you should be, you may need to prefix commands with `sudo`
+If you are logged in to your Linux box as a normal user, which you should be, you may need to prefix commands with `sudo`.
+
 YMMV (your mileage may vary).
 
 ## prepare LXC container
